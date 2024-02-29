@@ -22,21 +22,37 @@ app.set('views', './views')
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
 
+// ZORG DAT WERKEN MET REQUEST DATA MAKKELIJKER WORDT
+app.use(express.urlencoded({extended: true}))
+
+//ARRAY OM MESSAGES IN OP TE SLAAN VOOR MESSAGEBOARD
+const messages =[]
+
+
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  fetchJson(apiUrl + '/person').then((apiData) => {
+  fetchJson(apiUrl + '/person/?filter={"squad_id":3}').then((apiData) => {
     // apiData bevat gegevens van alle personen uit alle squads
     // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
-    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render('index', {persons: apiData.data, squads: squadData.data})
+    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons, 
+    //VOEG OOK MESSAGES TOE ALS VARIABELE
+    response.render('index', {
+      persons: apiData.data, 
+      squads: squadData.data,
+      messages: messages})
   })
 })
 
 // Maak een POST route voor de index
 app.post('/', function (request, response) {
+
+  //VOEG DE INGEVULDE MESSAGE TOE AAN DE ARRAY
+  messages.push(request.body.message)
+
   // Er is nog geen afhandeling van POST, redirect naar GET op /
+  // redirect is een HTTP response status code 303, die aangeeft dat de browser een GET request moet doen
   response.redirect(303, '/')
 })
 
@@ -50,10 +66,12 @@ app.get('/person/:id', function (request, response) {
 })
 
 // Stel het poortnummer in waar express op moet gaan luisteren
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 9000)
 
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
+
+

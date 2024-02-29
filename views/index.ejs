@@ -1,10 +1,23 @@
 <%- include('./partials/head') %>
 
-<h2>Students</h2>
+<form method="POST" action="/">
+  <label for="comment">Plaats een opmerking:</label>
+  <textarea id="comment" name="comment" required></textarea>
+  <button type="submit">Verstuur opmerking</button>
+</form>
+
+
+
+
 <ul>
   <% persons.forEach(person => { %>
-    <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li>
-  <% }) %>
-</ul>
+    <li>
+      <a href="./person/<%= person.id %>">
+      <%= person.name %></a> %>
+      <!-- <%= person.surname %>  -->
+      <img src="<%= person.avatar %>"`
+      onerror="this.onerror=null; this.src='../assets/placeholder.jpg'">
+    </li><% }) %>
+</ul> 
 
 <%- include('./partials/foot') %>
