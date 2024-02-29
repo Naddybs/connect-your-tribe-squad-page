@@ -49,7 +49,7 @@ app.get('/', function (request, response) {
 app.post('/', function (request, response) {
 
   //VOEG DE INGEVULDE MESSAGE TOE AAN DE ARRAY
-  messages.push(request.body.message)
+  messages.push(request.body.messages)
 
   // Er is nog geen afhandeling van POST, redirect naar GET op /
   // redirect is een HTTP response status code 303, die aangeeft dat de browser een GET request moet doen

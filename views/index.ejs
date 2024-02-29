@@ -1,11 +1,26 @@
 <%- include('./partials/head') %>
 
-<form method="POST" action="/">
+<h2>Huidige berichten</h2>
+ <form method="POST" action="/">
   <label for="comment">Plaats een opmerking:</label>
-  <textarea id="comment" name="comment" required></textarea>
+  <textarea id="comment" name="bericht" required></textarea>
   <button type="submit">Verstuur opmerking</button>
-</form>
+</form> 
 
+ 
+  <ul class="messageboard">
+    <% messages.forEach(message => { %>
+      <li><%= messages %></li>
+    <% }) %>
+  </ul>
+
+ 
+
+<ul>
+  <% messages.forEach(messages => { %>
+    <li><%= messages %></li>
+  <% }) %>
+</ul>
 
 
 

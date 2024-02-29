@@ -51,3 +51,19 @@ a{
     box-shadow: 0 0 10px #000000;
    
 }
+
+.messageboard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    background-color: ivory; 
+    overflow-y: scroll;
+    max-height: 500px;
+    margin: 5em;
+}
+
+.messageboard li{
+   color: black;
+   background-color: indianred;
+}
