@@ -25,6 +25,9 @@ app.use(express.static('public'))
 // ZORG DAT WERKEN MET REQUEST DATA MAKKELIJKER WORDT
 app.use(express.urlencoded({extended: true}))
 
+//ARRAY OM PERSONEN IN OP TE SLAAN
+let persons = []
+
 //ARRAY OM MESSAGES IN OP TE SLAAN VOOR MESSAGEBOARD
 const messages =[]
 
@@ -36,10 +39,17 @@ app.get('/', function (request, response) {
     // apiData bevat gegevens van alle personen uit alle squads
     // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
+    // Zorgt ervoor dat persons altijd bestaat, zelfs als het leeg is
+    // Dit is nodig omdat persons anders niet bestaat als er geen personen zijn
+    // Dit kan problemen opleveren in de view
+    persons = apiData.data || [];  
+
+
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons, 
     //VOEG OOK MESSAGES TOE ALS VARIABELE
+  
     response.render('index', {
-      persons: apiData.data, 
+      persons: persons, 
       squads: squadData.data,
       messages: messages})
   })
@@ -47,9 +57,9 @@ app.get('/', function (request, response) {
 
 // Maak een POST route voor de index
 app.post('/', function (request, response) {
-
+  console.log(request.body)
   //VOEG DE INGEVULDE MESSAGE TOE AAN DE ARRAY
-  messages.push(request.body.messages)
+  messages.push(request.body.bericht)
 
   // Er is nog geen afhandeling van POST, redirect naar GET op /
   // redirect is een HTTP response status code 303, die aangeeft dat de browser een GET request moet doen

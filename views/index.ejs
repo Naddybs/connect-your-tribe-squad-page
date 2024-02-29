@@ -10,17 +10,18 @@
  
   <ul class="messageboard">
     <% messages.forEach(message => { %>
-      <li><%= messages %></li>
+      <li><%= message %></li>
+      <% console.log('Displayed message:', message); %>
     <% }) %>
   </ul>
 
  
 
-<ul>
+<!-- <ul>
   <% messages.forEach(messages => { %>
     <li><%= messages %></li>
   <% }) %>
-</ul>
+</ul> -->
 
 
 
