@@ -1,20 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap');
+
 body{
-    background-color: hwb(268 3% 0%);
+   background-image: linear-gradient(to bottom, #160543, #170650, #17075e, #16076c, #13087a);
+    background-attachment: fixed;
+    margin: 0;
 }
-h1{
+h1, h2{
     color: hwb(331 0% 7%);
     text-align: center;
     font-size: 5em;
+    font-family: "Rammetto One", sans-serif;
+    text-shadow: 0 0 60px hsl(0, 0%, 100%);
 }
-img{
-    width: 300px;
-    height: 400px;
+img {
+    width: 200px;
+    height: 300px;
     object-fit: cover;
-    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-background-color: hwb(331 0% 7%);
+    position: relative;
+    
+    z-index: 1;
+    left: 0.5em;
+    top: 0.5em;
 }
-
+img:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+  
+  
+  
 ul{
    display: flex;
    flex-wrap: wrap;
@@ -28,21 +44,17 @@ ul{
    
 }
 li{ 
-    /* display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 1em; */
-
     max-width: 250px;
     padding: 1em;
     position: relative;
      margin: 0 0 15px 3px;  
  }
 
-a{
+div{
     text-decoration: none;
     color: #000000;
     text-align: center;
+    
     font-size: 1.5em;
     font-weight: bold;
     background-color:  hwb(331 0% 7%);
@@ -50,6 +62,18 @@ a{
     border-radius: 10px;
     box-shadow: 0 0 10px #000000;
    
+}
+li div{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
 }
 
 .messageboard{
@@ -59,11 +83,72 @@ a{
     gap: 1em;
     background-color: ivory; 
     overflow-y: scroll;
-    max-height: 500px;
     margin: 5em;
+    padding: 1em;
+    border-radius: 1em;
+    overflow-y: scroll;
+    box-shadow: inset 0 0 10px #000000;
+    background-color: #e8cad8;
 }
 
 .messageboard li{
    color: black;
-   background-color: indianred;
+    background-color: rgb(238, 158, 197);
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0 0 10px #000000;
+    width: 50%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px  hwb(331 0% 7%);
+  
+
+}
+
+.comment-section{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1600' height='1000' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1026%26quot%3b)' fill='none'%3e%3cpath d='M1512 560L0 560 L0 284.04Q57.96 270%2c 72 327.96Q148.81 284.77%2c 192 361.58Q229.09 278.67%2c 312 315.77Q383.56 267.33%2c 432 338.89Q501.25 288.14%2c 552 357.4Q560.38 293.78%2c 624 302.17Q654.31 260.49%2c 696 290.8Q758.51 281.31%2c 768 343.83Q834.08 289.91%2c 888 355.99Q953.48 301.47%2c 1008 366.95Q1050.81 289.76%2c 1128 332.57Q1160.89 245.46%2c 1248 278.35Q1327.37 237.72%2c 1368 317.09Q1391.18 268.27%2c 1440 291.45Q1494.14 273.6%2c 1512 327.74z' fill='rgba(238%2c 148%2c 200%2c 1)'%3e%3c/path%3e%3cpath d='M1488 560L0 560 L0 383.58Q47.03 310.61%2c 120 357.63Q161.9 327.53%2c 192 369.43Q278.01 335.44%2c 312 421.46Q338.44 375.9%2c 384 402.35Q438.45 336.8%2c 504 391.25Q525.02 340.27%2c 576 361.3Q605.83 319.13%2c 648 348.96Q713.37 342.32%2c 720 407.69Q764.07 379.76%2c 792 423.84Q797.54 357.38%2c 864 362.91Q933.23 312.14%2c 984 381.38Q1071.92 349.31%2c 1104 437.23Q1144.39 357.62%2c 1224 398.01Q1276.95 330.96%2c 1344 383.91Q1406.88 374.79%2c 1416 437.67Q1439.52 389.19%2c 1488 412.71z' fill='rgba(216%2c 23%2c 99%2c 1)'%3e%3c/path%3e%3cpath d='M1536 560L0 560 L0 440.46Q97.03 417.49%2c 120 514.51Q141.81 464.31%2c 192 486.12Q208.94 431.06%2c 264 448Q336.43 400.43%2c 384 472.85Q420.78 389.63%2c 504 426.42Q574.62 377.03%2c 624 447.65Q667.26 418.91%2c 696 462.18Q717.39 411.57%2c 768 432.96Q809.85 402.81%2c 840 444.66Q887.97 420.63%2c 912 468.61Q992.01 428.63%2c 1032 508.64Q1037.97 442.61%2c 1104 448.57Q1153.62 378.19%2c 1224 427.81Q1285.9 417.71%2c 1296 479.61Q1347.32 410.93%2c 1416 462.24Q1500.55 426.79%2c 1536 511.34z' fill='rgba(177%2c 53%2c 108%2c 1)'%3e%3c/path%3e%3cpath d='M1536 560L0 560 L0 550.12Q51.83 529.95%2c 72 581.78Q96.66 486.44%2c 192 511.1Q219.4 466.5%2c 264 493.91Q324.55 482.46%2c 336 543Q389.79 524.79%2c 408 578.57Q413.21 511.78%2c 480 516.98Q501.9 466.88%2c 552 488.78Q595.02 459.8%2c 624 502.83Q693.5 452.34%2c 744 521.84Q815.48 473.32%2c 864 544.79Q872.92 481.71%2c 936 490.63Q975.5 458.13%2c 1008 497.63Q1051.01 468.64%2c 1080 511.66Q1141.47 501.13%2c 1152 562.61Q1177.77 516.38%2c 1224 542.15Q1262.81 460.96%2c 1344 499.77Q1393.35 477.12%2c 1416 526.47Q1505.49 495.97%2c 1536 585.46z' fill='rgba(255%2c 255%2c 255%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1026'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2em;
+   
+}
+.comment-section h2{
+    color: hwb(331 0% 7%);
+    text-align: center;
+    font-size: 3em;
+    font-family: "Rammetto One", sans-serif;
+    text-shadow: 0 0 60px hwb(0 99% 0%);
+}
+.comment-section form{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+}
+.comment-section form input{
+    width: 50%;
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    box-shadow: 0 0 10px #000000;
+}
+.comment-section form textarea{
+    width: 50%;
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    box-shadow: 0 0 30px #d4086e;
+}
+.comment-section form button{
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    box-shadow: 0 0 10px hsl(0, 12%, 94%);
+    background-color: hwb(331 0% 7%);
+    color: #ffffff;
+    font-size: 1.3em;
+    font-weight: bold;
 }

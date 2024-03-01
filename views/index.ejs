@@ -1,39 +1,36 @@
 <%- include('./partials/head') %>
 
-<h2>Huidige berichten</h2>
- <form method="POST" action="/">
-  <label for="comment">Plaats een opmerking:</label>
-  <textarea id="comment" name="bericht" required></textarea>
-  <button type="submit">Verstuur opmerking</button>
-</form> 
-
  
+<section class="squad">
+    <ul>
+       <% persons.forEach(person => { %>
+          <li>
+             <div href="./person/<%= person.id %>"></div> %> 
+                 <a href="./person/<%= person.id %>">
+                 <img src="<%= person.avatar %>"`
+                 onerror="this.onerror=null; this.src='../assets/placeholder.jpg'"></a>
+          </li><% }) %>   
+    </ul> 
+</section>
+
+<section class="comment-section">
+    <h2>Bee kind & leave a comment 🐝</h2>
+      <form method="POST" action="/">
+        <textarea id="comment" name="bericht" required placeholder="plaats een opmerking"></textarea>
+        <button type="submit">Submit message</button>
+      </form> 
+
   <ul class="messageboard">
-    <% messages.forEach(message => { %>
-      <li><%= message %></li>
-      <% console.log('Displayed message:', message); %>
-    <% }) %>
+    <h2>Messages</h2>
+        <% messages.forEach(message => { %>
+        <li><%= message %></li>
+         <% console.log('Displayed message:', message); %>
+        <% }) %>
   </ul>
-
- 
-
-<!-- <ul>
-  <% messages.forEach(messages => { %>
-    <li><%= messages %></li>
-  <% }) %>
-</ul> -->
+</section>
 
 
 
-<ul>
-  <% persons.forEach(person => { %>
-    <li>
-      <a href="./person/<%= person.id %>">
-      <%= person.name %></a> %>
-      <!-- <%= person.surname %>  -->
-      <img src="<%= person.avatar %>"`
-      onerror="this.onerror=null; this.src='../assets/placeholder.jpg'">
-    </li><% }) %>
-</ul> 
+
 
 <%- include('./partials/foot') %>
